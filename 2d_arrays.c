@@ -3,31 +3,46 @@
 # include <stdarg.h>
 
 
-void Display(int** array , int row , int col);
+
+//void Display(int (*ptr)[] , int row , int col);
+void Display(int row , int (*ptr)[] , int col);
+
 
 int main(void)
 {
-	int array[10][10];
+	int arr[3][3];
+        int (*ptr)[3] = arr;
 
-	for(int  i = 0 ; i < 10 ; i++)
+	for(int  i = 0 ; i < 3 ; i++)
 	{
-		for(int j = 0 ; j < 10 ; j++)
+		for(int j = 0 ; j < 3 ; j++)
 		{
-			array[i][j] = 20+i+j;
+			arr[i][j] = 100; 
 		}
 	}
-	Display(array , 10 , 10);
+
+
+	/*for(int i = 0 ; i < 3 ; i++)
+	{
+		for(int j = 0 ; j < 3 ; j++)
+		{
+			printf(" %d   \n " , *(*(ptr + i) + j));
+		}
+	}*/
+	//Display(arr, 3 , 3);
+	Display(3 , arr , 3);
 	return 0;
 }
 
 
-void Display(int** array, int row , int col)
+void Display(int row , int (*ptr)[row]  , int col)
 {
+	
 	for(int i = 0 ; i < row ; i++)
 	{
 		for(int j = 0 ; j < col ; j++)
 		{
-			printf("arr[%d][%d] = %d \n " , row , col , array[row][col]); 
+			printf("arr[%d][%d] = %d \n " , row , col , *(*(ptr + i) + j)); 
 		}
 	}
 }
