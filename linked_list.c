@@ -12,7 +12,7 @@ typedef struct Node
 node *head = NULL;
 
 void Insert(int value);
-//void InsertAtFront(int value);
+void InsertAtFront(int value);
 void Delete();
 void DeleteFromLast();
 void Display();
@@ -23,21 +23,21 @@ int main(void)
 	//head->data = 100;
 	//head->next = NULL;
 	Insert(103);
-	Insert(104);
-	Insert(105);
+	InsertAtFront(104);
+	InsertAtFront(105);
 	Display();
-	Delete();
-	Display();
-	DeleteFromLast();
+	//Delete();
+	//Display();
+	//DeleteFromLast();
         	
 	//Insert(110);
 	//Insert(111);
 	//Insert(112);
 	//Insert(113);
 	//DeleteFromLast();
-        Display();
-	Delete();
-	Display();
+        //Display();
+	//Delete();
+	//Display();
 
 	//DeleteFromLast();
 	//Display();
@@ -46,17 +46,27 @@ int main(void)
 	return 0;
 }
 
-/*void Insert(int value)
+
+
+void InsertAtFront(int value)
 {
-	node *temp = head;
-	while(temp->next!=NULL)
-	{
-		temp = temp->next;
-	}
-	temp->next = (node*)malloc(sizeof(node));
-	temp->next->data = value;
-	temp->next->next = NULL;
-}*/
+    if(head == NULL)
+    {
+	    head = (node*)malloc(sizeof(node));
+	    head->data = value;
+	    head->next = NULL;
+    }
+    else
+    {
+	    node *temp = (node*)malloc(sizeof(node));
+	    temp->data = value;
+	    temp->next = head;
+            //head = head->next;
+	    head = temp;
+          
+    }
+}
+
 
 
 void Insert(int value)
