@@ -12,6 +12,7 @@ typedef struct Node
 node *head = NULL;
 
 void Insert(int value);
+//void Reverse();
 void InsertAtFront(int value);
 void Delete();
 void DeleteFromLast();
