@@ -1,4 +1,5 @@
 # include <stdio.h>
+
 # include <stdlib.h>
 # include <stdarg.h>
 
@@ -36,8 +37,10 @@ int main(void)
 	Insert(111);
 	Insert(112);
 	Insert(113);
+	printf(" Original List : \n ");
 	Display();
 	Reverse();
+        printf(" List After Reversing : \n ");	
 	Display();
 	//Display();
 	//DeleteFromLast();
@@ -102,6 +105,7 @@ void Insert(int value)
 
 void Display()
 {
+	//printf("Head value from display func : %d \n" , head->data);
 	node *temp = head;
 	if(temp == NULL)
 	{
@@ -178,29 +182,20 @@ void CustomDisplay(node *ptr)
 void Reverse()
 {
     int count = GetCount();
-    //for(int i = 0 ; i < 
     node *temp = head;
+    //printf("Head value from beginning of reverse func : %d \n" , head->data);
     while(temp!=NULL)
     {
  	    InsertAtFront(temp->data);	
 	    temp = temp->next;
     }
     
-    node *temp2 = head;
     for(int i = 0 ; i < count ; i++)
     {
-        temp2 = temp2->next;
+	DeleteFromLast();
     }
-    //printf(" Temp2 : %d \n " , temp2->data);
-    //printf(" Temp2->next : %d \n" , temp2->next->data);
-    //printf(" Count : %d \n" , count);
 
-    /*while(temp2!=NULL)
-    {
-        Delete(temp2);
-	temp2 = temp2->next;
-    }*/
-    printf(" %d \n " , head->data);
+    
 
 }
 
