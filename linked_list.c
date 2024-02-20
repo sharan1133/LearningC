@@ -17,6 +17,7 @@ void Reverse();
 void CustomDisplay(node *ptr);
 int GetCount();
 void InsertAtFront(int value);
+void InsertAtPos(int value , int pos , int count);
 void Delete();
 void DeleteFromLast();
 void Display();
@@ -25,8 +26,13 @@ int main(void)
 {
        	
 	Insert(110);
-        Display();
-	Delete();
+	Insert(112);
+	Insert(113);
+	Insert(115);
+	Display();
+	InsertAtPos(114 , 4 , GetCount());
+	Display();
+	InsertAtPos(111 , 2 , GetCount());
 	Display();
 	free(head);
 	return 0;
@@ -175,4 +181,46 @@ void Reverse()
     
 
 }
+
+
+void InsertAtPos(int value , int pos , int count)
+{
+    //int count = GetCount(); 
+   
+    if(count > 0)
+    { 	if(pos == 0)
+    	{
+		InsertAtFront(value);
+    	}
+    	else if(pos == count+1) 
+    	{
+		Insert(value);
+    	}
+    	else if(0 < pos <= count)
+    	{
+             	node *temp = head;
+		int counter = 0;
+		while(counter!=pos-2)
+		{
+			temp = temp->next;
+			counter++;
+		}
+		//printf(" %d \n " , temp->data);
+		node *temp2 = (node*)malloc(sizeof(node));
+		temp2->data = value;
+		temp2->next = temp->next;
+		temp->next = temp2;	        	
+   	}
+	else
+	{
+		printf(" Invalid position! \n ");
+	}
+   }
+   else
+   {
+	   printf(" Invalid Value Entered! \n ");
+   }
+}
+
+
 
