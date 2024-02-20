@@ -23,34 +23,11 @@ void Display();
 
 int main(void)
 {
-	//head = (node*)malloc(sizeof(node));
-	//head->data = 100;
-	//head->next = NULL;
-	Insert(103);
-	//InsertAtFront(104);
-	//InsertAtFront(105);
-	//Delete();
-	//Display();
-	//DeleteFromLast();
-        	
+       	
 	Insert(110);
-	Insert(111);
-	Insert(112);
-	Insert(113);
-	printf(" Original List : \n ");
+        Display();
+	Delete();
 	Display();
-	Reverse();
-        printf(" List After Reversing : \n ");	
-	Display();
-	//Display();
-	//DeleteFromLast();
-        //Display();
-	//Delete();
-	//Display();
-
-	//DeleteFromLast();
-	//Display();
-
 	free(head);
 	return 0;
 }
