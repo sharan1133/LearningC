@@ -14,10 +14,12 @@ node *head = NULL;
 
 void Insert(int value);
 void Reverse();
+void Sort();
 void CustomDisplay(node *ptr);
 int GetCount();
 void InsertAtFront(int value);
 void InsertAtPos(int value , int pos , int count);
+void DeleteAtPos(int pos);
 void Delete();
 void DeleteFromLast();
 void Display();
@@ -30,10 +32,19 @@ int main(void)
 	Insert(113);
 	Insert(115);
 	Display();
-	InsertAtPos(114 , 4 , GetCount());
+	DeleteAtPos(3);	
 	Display();
-	InsertAtPos(111 , 2 , GetCount());
+	DeleteAtPos(2);
 	Display();
+	DeleteAtPos(1);
+	Display();
+	DeleteAtPos(1);
+	DeleteAtPos(1);
+	//Display();
+	//InsertAtPos(114 , 4 , GetCount());
+	//Display();
+	//InsertAtPos(111 , 2 , GetCount());
+	//Display();
 	free(head);
 	return 0;
 }
@@ -223,4 +234,45 @@ void InsertAtPos(int value , int pos , int count)
 }
 
 
+void DeleteAtPos(int pos)
+{
+	int count = GetCount();
+	if(pos > count || pos < 0)
+		printf(" Invalid position entered! \n ");
+	else
+	{
+                if(head == NULL)
+		   printf(" Cannot delete from empty list! \n");
+	        else if(pos == 0 || pos == 1)
+		    Delete();
 
+		else
+		{
+			node *temp = head;
+			int counter = 0;
+			while(counter!=pos-2)
+			{
+				temp = temp->next;
+				counter++;
+			}
+			node *temp2 = temp->next;
+			temp->next = temp2->next;
+			free(temp2);
+		}
+	}
+}
+
+
+void Sort()
+{
+	node *temp = head;
+	int count = GetCount();
+	for(int i = 0 ; i < count-1 ; i++)
+	{
+		
+		for(int j = i+1 ; j < count ; j++)
+		{
+					
+		}
+	}
+}
