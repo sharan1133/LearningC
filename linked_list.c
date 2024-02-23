@@ -27,24 +27,13 @@ void Display();
 int main(void)
 {
        	
-	Insert(110);
-	Insert(112);
-	Insert(113);
-	Insert(115);
+	Insert(119);
+	Insert(88);
+	Insert(1);
+	Insert(500);
 	Display();
-	DeleteAtPos(3);	
+	Sort();
 	Display();
-	DeleteAtPos(2);
-	Display();
-	DeleteAtPos(1);
-	Display();
-	DeleteAtPos(1);
-	DeleteAtPos(1);
-	//Display();
-	//InsertAtPos(114 , 4 , GetCount());
-	//Display();
-	//InsertAtPos(111 , 2 , GetCount());
-	//Display();
 	free(head);
 	return 0;
 }
@@ -265,14 +254,35 @@ void DeleteAtPos(int pos)
 
 void Sort()
 {
-	node *temp = head;
 	int count = GetCount();
+	int arr[count];
+	node *temp = head;
+	for(int i = 0 ; i < count ; i++)
+	{
+		arr[i] = temp->data;
+		temp->data = 0;
+		temp = temp->next;
+	}
+
+	int swap;
 	for(int i = 0 ; i < count-1 ; i++)
 	{
-		
 		for(int j = i+1 ; j < count ; j++)
 		{
-					
+			if(arr[i] > arr[j])
+			{
+				swap = arr[i];
+				arr[i] = arr[j];
+				arr[j] = swap;
+			}
 		}
 	}
+	
+	node *temp2 = head;
+	for(int i = 0 ; i < count ; i++)
+	{
+		temp2->data = arr[i];
+		temp2 = temp2->next;
+	}
+
 }
