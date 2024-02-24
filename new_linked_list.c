@@ -8,7 +8,7 @@ typedef struct Node
 	int data;
 }node;
 
-
+// void Merge(node **ptrttohead)
 
 node* CreateNode(void)
 {
