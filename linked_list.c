@@ -15,6 +15,7 @@ node *head = NULL;
 void Insert(int value);
 void Reverse();
 void Sort();
+//void SortUsingInsertion();
 void CustomDisplay(node *ptr);
 int GetCount();
 void InsertAtFront(int value);
@@ -27,10 +28,11 @@ void Display();
 int main(void)
 {
        	
-	Insert(119);
-	Insert(88);
-	Insert(1);
-	Insert(500);
+	Insert(15);
+	Insert(2);
+	Insert(11);
+	Insert(20);
+	Insert(4);
 	Display();
 	Sort();
 	Display();
@@ -265,7 +267,7 @@ void Sort()
 	}
 
 	int swap;
-	for(int i = 0 ; i < count-1 ; i++)
+	/*for(int i = 0 ; i < count-1 ; i++)
 	{
 		for(int j = i+1 ; j < count ; j++)
 		{
@@ -276,6 +278,21 @@ void Sort()
 				arr[j] = swap;
 			}
 		}
+	}*/
+
+
+	for(int i = 1 ; i < count ; i++)
+	{
+		int key = arr[i];
+		int j = i-1;
+
+		while(j >= 0 && arr[j] > key)
+		{
+			arr[j+1] = arr[j];
+			j = j-1;
+
+		}
+		arr[j+1] = key;
 	}
 	
 	node *temp2 = head;
@@ -286,3 +303,7 @@ void Sort()
 	}
 
 }
+
+
+
+
