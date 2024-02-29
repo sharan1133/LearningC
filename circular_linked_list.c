@@ -10,7 +10,9 @@ typedef struct Node
 
 
 void Insert(node **ptr , int value);
+void InsertStack(node **ptr , int value);
 void Delete(node **ptr);
+void DeleteQueue(node **ptr);
 void Display(node *ptr);
 void CleanUp(node *ptr);
 
@@ -21,19 +23,25 @@ int main(void)
 	Insert(&head , 10);
 	Insert(&head , 20);
 	Insert(&head , 30);
-	Insert(&head , 40);
-	Insert(&head , 50);
+	//Insert(&head , 40);
+	//Insert(&head , 50);
+	
 	Display(head);
-	Delete(&head);
-	Display(head);
-	Delete(&head);
-	Display(head);
-	Delete(&head);
-	Display(head);
-	Delete(&head);
-	Display(head);
-	Delete(&head);
-	Display(head);
+	//printf(" Deleting element : \n ");
+	//DeleteQueue(&head);
+	//Display(head);
+	//printf(" Deleting element : \n ");
+	//DeleteQueue(&head);
+	//Display(head);
+	//printf(" Deleting element : \n ");
+	//DeleteQueue(&head);
+	//Display(head);
+	//printf(" Deleting element : \n ");
+	//DeleteQueue(&head);
+	//Display(head);
+	//printf(" Deleting element : \n ");
+	//Delete(&head);
+	//Display(head);
 	CleanUp(head);
 	head = NULL;
 	return 0;
@@ -115,6 +123,39 @@ void Display(node *ptr)
 }
 
 
+
+void DeleteQueue(node **ptr)
+{
+	if(*ptr == NULL)
+	{
+		printf("Nothing to be deleted! \n ");
+	}
+
+	else if((*ptr)->next == *ptr)
+	{
+		free(*ptr);
+		*ptr = NULL;
+	}
+
+
+	else
+	{
+		node *temp = *ptr;
+		while(temp->next!=*ptr)
+		{
+			temp = temp->next;
+		}
+		//free(temp->next);
+		node *dump = temp->next;
+		temp->next = (*ptr)->next;
+		*ptr = (*ptr)->next;
+		free(dump);
+	}
+}
+
+
+
+
 void CleanUp(node *ptr)
 {
 	if(ptr == NULL)
@@ -137,3 +178,36 @@ void CleanUp(node *ptr)
 		free(head);
 	}
 }
+
+
+void InsertStack(node **ptr , int value)
+{
+	if(*ptr == NULL)
+	{
+		node *temp = (node*)malloc(sizeof(node));	
+		temp->data = value;
+		temp->next = temp;
+		*ptr = temp;
+		//head = *ptr;
+	}
+	else
+	{
+		node *temp = *ptr;
+		/*while(temp->next!=*ptr)
+		{
+			temp = temp->next;
+		}
+		node *new = (node*)malloc(sizeof(node));
+	        new->next = (*ptr)->next; 
+		new->data = value;
+		temp->next = new; */
+
+		node *new = (node*)malloc(sizeof(node));
+		new->data = value;
+		new->next = temp->next;
+		temp->next = new;
+		*ptr = new;
+		
+	}
+}
+

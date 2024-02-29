@@ -10,8 +10,20 @@ typedef struct
 	int count;
 }Temp;
 
+
+# define testmacro(a , b) \ 
+            c = a+b; \
+	    printf(" %d \n " , c); \
+
+
 int main(void)
 {
+	int a  = 10;
+	int b = 20;
+
+	int c;
+
+	testmacro(a , b);
 	//int a = 10;
 	//int *ptr = &a;
 	//printf(" Size of int : %d \n " , sizeof(a));
@@ -47,10 +59,10 @@ int main(void)
 	
 	
 	//int *alloc = malloc(sizeof(int) * 10);
-	int *alloc = calloc(10 , sizeof(int));
-	for(int i = 0 ; i < 10 ; i++)
-		printf( " %d \n "  , *(alloc + i));
-
-
+	//int *alloc = calloc(10 , sizeof(int));
+	//for(int i = 0 ; i < 10 ; i++)
+		//printf( " %d \n "  , *(alloc + i));
+	
+	
 	return 0;
 }
