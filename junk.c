@@ -15,6 +15,16 @@ void outer()
 
 int main(int argc , char *argv[])
 {
+	typedef struct Temp 
+	{
+		int a;
+		int b;
+	}checking;
+
+	checking check = {20 , 30};
+	printf(" %d        %d \n " , check.a , check.b); 
+
+
 	/*int printf(char *ptr , ...);
 	printf(" Hello ! \n ");
 	printf("World \n ");
