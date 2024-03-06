@@ -144,7 +144,7 @@ void InsertAtPos(node **head , int value , int pos)
 		printf(" Invalid position entered! \n ");
 	else
 	{
-		if(pos == 0)
+		if((pos == 0) || (pos == 1))
 		{
 			//node *temp = *head;
 			InsertAtFront(&(*head), value);
@@ -225,7 +225,7 @@ void CleanUp(node *head)
 }
 
 
-int main(void)
+/*int main(void)
 {
 	node *head = NULL;
 	InsertAtLast(&head , 10);
@@ -244,8 +244,6 @@ int main(void)
 	printf("Deleting element at pos :1 \n ");
 	DeleteAtPos(&head , 1);
 	Display(head);
-	/*DeleteAtLast(&head);
-	Display(head);
 	DeleteAtLast(&head);
 	Display(head);
 	DeleteAtLast(&head);
@@ -254,7 +252,9 @@ int main(void)
 	Display(head);
 	DeleteAtLast(&head);
 	Display(head);
-	free(head); */
-	CleanUp(head);
+	DeleteAtLast(&head);
+	Display(head);
+	free(head); 
+	//CleanUp(head);
 	return 0;
-}
+}*/
