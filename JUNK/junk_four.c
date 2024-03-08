@@ -37,7 +37,7 @@ int main(void)
 
 {
 	
-
+	//printf("Hey! \n");
 	node *new = NULL;
 	INSERTFRONT(new , 10);
 	INSERTFRONT(new , 20);
