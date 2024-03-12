@@ -9,21 +9,33 @@ typedef struct Node
 }node;
 
 
-
-int main(void)
+int Run(char** argv[])
 {
-	node* NODES[10];
-	for(int i = 0 ; i < 10 ; i++)
+	FILE *makefile = fopen("Makefile" , "w");
+
+	if(makefile == NULL)
 	{
-		NODES[i] = (node*)malloc(sizeof(node));
-		NODES[i]->data = i+570;
-		//temp->data = i+100;
+		printf("Error opening makefile. \n ");
+		return 1;
 	}
 
-	for(int i = 0 ; i < 10 ; i++)
-	{
-		printf(" %d \n " , NODES[i]->dat);
-	}
-	printf(" Hello World! \n ");
-	return 0;
+	fprintf(makefile , "SRC = %s.c\nEXEC = %s\n\n" , *(*(argv+0)) ,*(*(argv+0)));
+	 fprintf(makefile, "all: $(EXEC)\n\tgcc $(SRC) -o $(EXEC)\n\n$(EXEC): $(SRC)\n");
+
+	 fclose(makefile);
+}
+
+
+
+int main(int argc , char* argv[])
+{
+		printf(" %s \n " , argv[0]);
+		printf("Hi \n ");
+		//system(" echo 'Hello World' 'World Hello' ");
+		//system(" mkdir tempfolder && echo 'Folder created'");
+		//system("rmdir tempfolder && echo 'Folder removed' ");
+		int result = Run(&argv);
+	
+		printf(" %d \n " , result);
+		return 0;
 }
