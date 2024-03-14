@@ -28,6 +28,11 @@ int main(void)
 	int *new_ptr_4 = ((int*)ptr) + 4;
 
 	int *new_ptr_5 = ((int*)ptr) + 5;
+
+	*new_ptr_5 = 84;
+
+	printf(" Cur : %d \n " , *((int*)ptr+5));
+
 	printf(" %d \n " , new_ptr);
 	printf(" %d \n " , new_ptr+1);
 	printf(" %d \n " , new_ptr+2);
