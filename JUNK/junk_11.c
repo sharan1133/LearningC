@@ -15,7 +15,8 @@ typedef enum COLUMNS
 
 typedef struct DataFrame
 {
-	cols temp;
+	cols temp[3] = {x , y , z};
+	int arrayj
 	
 	//cols columns[3] = {"x" ,"y" ," z"};
 
@@ -24,7 +25,11 @@ typedef struct DataFrame
 int main(void)
 {
 	//cols temp = z;
-	cols array[2] = {x , z};
-	printf(" %d \n " , array[1]);
+	//cols array[2] = {x , z};
+	//printf(" %c \n " , array[1]);
+	//printf(" %d \n " , array[1]);
+	
+	cols temp = y;
+	printf(" %d \n " , temp);
 	return 0;
 }
