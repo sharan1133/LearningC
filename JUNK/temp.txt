@@ -1,13 +1,5 @@
- array[0][0] = 0 
-  array[0][1] = 0 
-  array[1][0] = 0 
-  array[1][1] = 0 
-  array[2][0] = 29 
-  array[2][1] = 0 
-  array[0][0] = 0 
-  array[0][1] = 0 
-  array[1][0] = 0 
-  array[1][1] = 0 
-  array[2][0] = 29 
-  array[2][1] = 0 
- 
+Hello World
+UID          PID    PPID  C STIME TTY          TIME CMD
+sharanb     8898    4664  0 18:30 pts/2    00:00:00 ./junk_13
+UID          PID    PPID  C STIME TTY          TIME CMD
+sharanb     8898    4664  0 18:30 pts/2    00:00:00 ./junk_13
