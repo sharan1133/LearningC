@@ -5,6 +5,7 @@ typedef enum Values
 {
 	A,
 	B,
+	D,
 	C
 }VAL;
 
