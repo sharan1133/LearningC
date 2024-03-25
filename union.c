@@ -6,6 +6,7 @@
 typedef union Fields 
 {
 	int age;
+	int temp;
 	char name[11];
 	float height;
 }field;
