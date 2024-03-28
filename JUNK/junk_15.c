@@ -10,7 +10,15 @@ int main(void)
 {
 	int status;
 	
-	wait(&status);
+	//wait(&status);
+	printf(" Forked process starts : \n ");
 	pid_t forked = fork();
-	printf(" %d \n " , status);
+	
+	if(forked == 0)
+	{
+	   printf(" forked : %d \n " , forked);
+	   exit(0);
+	}
+	wait(&status);
+	printf(" Status : %d \n " , status);
 }
