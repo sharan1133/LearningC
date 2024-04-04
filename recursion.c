@@ -15,7 +15,7 @@ int fact(int n)
 
 int factorial(int n)
 {
-	printf("Hello");
+	printf("Hello World");
 	int result = 1; 
 	for(int i = n ; i > 0 ; i--)
 	{
