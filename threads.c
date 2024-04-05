@@ -13,6 +13,7 @@
 
 void* start_routine(void* arg)
 {
+	printf("\n");
 	printf("Thread t1 is here ! \n ");
 	pthread_exit(NULL);
 }
