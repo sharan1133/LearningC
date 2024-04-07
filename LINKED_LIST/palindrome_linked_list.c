@@ -99,21 +99,77 @@ bool CheckPalindrome(node *head)
 
 	}
 	return true;
-
-
 }
+
+
+void IsPalindrome(node** head)
+{
+	if(*head == NULL)
+		printf("Empty List!\n");
+	else
+	{
+		node *fast = *head;
+		node *slow = *head;
+		
+		while((fast!=NULL) && (fast->next!=NULL))
+		{
+			fast = fast->next->next;
+			slow = slow->next;
+		}
+		//printf(" Fast : %d \n "  , fast->data); 
+		//printf(" Slow : %d \n "  , slow->data);
+
+		// Reverse second half
+		
+		node *prev = NULL;
+	
+		while(slow!=NULL)
+	  	{
+			node *temp = slow->next;
+			slow->next = prev;
+			prev = slow;
+			slow = temp;
+		}
+
+
+		node *left  = *head;
+		node *right = prev;
+
+		while(right!=NULL)
+		{
+			if(left->data != right->data)
+			{
+				printf(" Not palindrome!\n ");
+				return;
+			}
+			else
+			{
+				left = left->next;	
+				right = right->next;
+			}
+		}
+		printf(" Is a palindrome! \n ");
+				
+	}
+}
+
 
 
 
 int main(void)
 {
 	node *head = NULL;
+	//Insert(&head , 8);
+	Insert(&head , 2);
 	Insert(&head , 1);
+	Insert(&head , 2);
 	Insert(&head , 1);
-	Insert(&head , 1);
+	Insert(&head , 4);
 	Display(head);
-	bool result = CheckPalindrome(head);
-	printf(" %d \n " , result);
-	printf("Hello! \n ");
+	//bool result = CheckPalindrome(head);
+	//printf(" %d \n " , result);
+	IsPalindrome(&head);
+	//printf("Hello! \n ");
+	free(head);
 	return 0;
 }
