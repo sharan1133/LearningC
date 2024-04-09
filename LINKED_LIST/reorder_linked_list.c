@@ -8,10 +8,8 @@
 // Solution : 1->4->2->3
 
 
-
 typedef struct Node {
 	struct Node *next;
-	struct Node *prev;
 	int data;
 }node;
 
@@ -24,15 +22,14 @@ void Insert(node **head , int data)
 		node *temp = (node*)malloc(sizeof(node));
 		temp->data = data;
 		temp->next = NULL;
-		temp->prev = NULL;
 		*head = temp;
 	}
+
 	else
 	{
 		node *temp = (node*)malloc(sizeof(node));
 		temp->data = data;
 		temp->next = *head;
-		temp->prev = NULL;
 		*head = temp;
 	}
 }
@@ -41,7 +38,7 @@ void Insert(node **head , int data)
 void Display(node *head)
 {
 	if(head == NULL)
-		printf("List is empty! Nothing to be displayed!\n");
+		printf("Nothing to be displayed!\n");
 	else
 	{
 		node *temp = head;
@@ -51,52 +48,94 @@ void Display(node *head)
 			printf(" -> ");
 			temp = temp->next;
 		}
-		printf(" \n ");
+		printf("\n");
 	}
 }
+
 
 
 void Reorder(node **head)
 {
-	if((*head == NULL) || ((*head)->next == NULL))
-	{
-		printf("Not enough elements to perform this operation! \n ");
-	}
+	if(*head == NULL)
+		printf("Not enough elements!\n");
 	else
 	{
-		node *temp = *head;
-		node *temp2 = *head;
 
-		while(temp->next!=NULL)
-		{
-			temp = temp->next;
-		}
-	
-		while()
-		{
-			node *tmp = temp->prev;	
-			node *tmp2 = temp2->next;
-			temp2->next = temp;
-			temp->prev = temp2;
-			temp->next = tmp2; 
-			tmp->next = NULL;
-			temp = tmp;
-			temp2 = tmp2; 
+		// Find middle of List
 
+		node *fast = *head;
+		node *slow = *head;
+
+		while((fast!=NULL) && (fast->next!=NULL))
+		{
+			fast = fast->next->next;
+			slow = slow->next;
 		}
+
+
+		
+
+		node *second = slow->next;
+		slow->next = NULL;
+
+		// Reverse List 
+		
+		node *prev = NULL;
+		node *temp = NULL;
+		while(second!=NULL)
+		{
+			temp = second->next;	
+			second->next = prev;
+			prev = second;
+			second = temp;
+		}
+
+
+		// Reorder list 
+
+		
+		node *start = *head;
+		node *end = prev;
+		while(end!=NULL)
+		{
+			node *fr = start->next;
+			node *lr = end->next;
+
+			start->next = end;
+			end->next = fr;
+
+			//lr->next = NULL;
+
+			start = fr;
+			end= lr;
+		}
+
 
 	}
+
+
+
 }
+
+
+
+
+
+
+
+
 
 int main(void)
 {
 	node *head = NULL;
-	Insert(&head , 4);
+	Insert(&head , 10);
+	Insert(&head , 7);
+	Insert(&head , 5);
 	Insert(&head , 3);
-	Insert(&head , 2);
 	Insert(&head , 1);
 	Display(head);
+	//printf("Hello World!\n");
 	Reorder(&head);
-	printf("Hello World! \n ");
+	Display(head);
 	return 0;
 }
