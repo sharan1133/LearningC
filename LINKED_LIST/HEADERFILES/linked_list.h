@@ -29,25 +29,28 @@ void InsertAtBeginning(node **head , int data)
 
 void InsertAtEnd(node **head , int data)
 {
-	node *temp = NULL; 
-	temp->data = data;
+	//node *temp = NULL; 
+	//temp->data = data;
 
 	if(*head == NULL)
 	{
-		temp = (node*)malloc(sizeof(node));
+		node *temp = (node*)malloc(sizeof(node));
+		temp->data = data;
 		temp->next = NULL;
 		*head = temp;
 	}
 
 	else
 	{
-		temp = *head;	
+		node *temp = *head;	
 		while(temp->next!=NULL)
 		{
 			temp = temp->next;
 		}
 		
+		//temp->data = data;
 		temp->next = (node*)malloc(sizeof(node));
+		temp->next->data = data;
 		temp->next->next = NULL;
 
 	}
