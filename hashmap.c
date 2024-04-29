@@ -5,7 +5,7 @@
 # include <string.h>
 
 
-#define CAPACITY 70
+#define CAPACITY 90
 
 typedef struct Entry {
 	char* key;
