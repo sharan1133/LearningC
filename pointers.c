@@ -32,6 +32,17 @@ int main(void)
 		printf("\n");
 	}
 
+
+	for(int i = 0 ; i < 5 ; i++)
+	{
+		
+		int* temp = *(ptr2 + i);
+		free(temp);
+		
+	}
+	free(ptr2);
+	printf("Clean Up complete!\n");
+
 	printf("\n");
 	return 0;
 }
