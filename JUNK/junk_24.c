@@ -40,6 +40,7 @@ HashMap* Create()
 }
 
 
+
 void Push(HashMap* map , char* key , int data)
 {
 	int hash = 0;
